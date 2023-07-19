@@ -33,6 +33,7 @@ source_label = None
 target_label = None
 status_label = None
 
+isPreviewRunning = False
 
 def init(start: Callable[[], None], destroy: Callable[[], None]) -> ctk.CTk:
     global ROOT, PREVIEW
@@ -244,11 +245,11 @@ def webcam_preview():
     global preview_label, PREVIEW
 
     cap = cv2.VideoCapture(0)  # Use index for the webcam (adjust the index accordingly if necessary)    
-    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 960)  # Set the width of the resolution
-    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 540)  # Set the height of the resolution
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)  # Set the width of the resolution
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)  # Set the height of the resolution
     cap.set(cv2.CAP_PROP_FPS, 30)  # Set the frame rate of the webcam
-    PREVIEW_MAX_HEIGHT = 960
-    PREVIEW_MAX_WIDTH = 540
+    PREVIEW_MAX_HEIGHT = 1920
+    PREVIEW_MAX_WIDTH = 1080
 
     preview_label.configure(image=None)  # Reset the preview image before startup
 
@@ -258,7 +259,9 @@ def webcam_preview():
 
     source_image = None  # Initialize variable for the selected face image
 
-    while True:
+    global isPreviewRunning
+    isPreviewRunning = not isPreviewRunning
+    while isPreviewRunning:
         ret, frame = cap.read()
         if not ret:
             break
