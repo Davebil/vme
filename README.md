@@ -115,22 +115,6 @@ python run.py --execution-provider coreml
 
 ```
 
-### [](https://github.com/s0md3v/roop/wiki/2.-Acceleration#coreml-execution-provider-apple-legacy)CoreML Execution Provider (Apple Legacy)
-
-1.  Install dependencies:
-
-```
-pip uninstall onnxruntime onnxruntime-coreml
-pip install onnxruntime-coreml==1.13.1
-
-```
-
-2.  Usage in case the provider is available:
-
-```
-python run.py --execution-provider coreml
-
-```
 
 ### [](https://github.com/s0md3v/roop/wiki/2.-Acceleration#directml-execution-provider-windows)DirectML Execution Provider (Windows)
 
